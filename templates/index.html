@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción Bank Marketing</title>
+</head>
+<body>
+    <h1>Formulario de predicción</h1>
+    <form method="post">
+        Edad: <input type="number" name="age" step="1" required><br>
+        Balance: <input type="number" name="balance" step="any" required><br>
+        Día del mes: <input type="number" name="day" step="1" required><br>
+        Duración: <input type="number" name="duration" step="any" required><br>
+        Campaña: <input type="number" name="campaign" step="1" required><br>
+        Días desde última campaña (pdays): <input type="number" name="pdays" step="1" required><br>
+        Número de contactos previos: <input type="number" name="previous" step="1" required><br>
+        <input type="submit" value="Predecir">
+    </form>
+
+    {% if prediction is not none %}
+        <h2>Resultado:</h2>
+        <p>Predicción: {{ 'Sí' if prediction == 1 else 'No' }}</p>
+        <p>Probabilidad: {{ '%.2f'|format(probability*100) }}%</p>
+    {% endif %}
+</body>
+</html>
